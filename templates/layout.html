@@ -1,0 +1,71 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/style.css' %}"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <title>Trading Capstone</title>
+  </head>
+  <body>
+    <div class="jumbotron parallax" id="main-background">
+    <div class="container-fluid">
+    <div class="col-sm-9" >
+      <div id="compName">
+      <a href="{% url 'home' %}"><h1> Agricultural <br>Futures Inc.</h1>
+      <h4><i>...trade like a pro.</i></h4></a>
+    </div>
+
+      <div class="imgcontainer">
+     <a href="{% url 'home' %}"><img src= "{% static 'images/Home.jpg' %}" alt="Home" class="Home"/></a>
+    </div>
+    </div>
+    <div class="col-sm-3" id="front_login">
+    {% block login %}
+    {% endblock %}
+  </div>
+  </div>
+  </div>
+
+  <div class="container-fluid" id="nav-section">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+  <ul class="nav navbar-nav">
+    <li class="active"><a href="{% url 'home' %}" class="nav-links">Transactions</a></li>
+    <li><a href="{% url 'portfolio' %}"  class="nav-links">Portfolio</a></li>
+    <li><a href="{% url 'home' %}" class="nav-links">Add Funds</a></li>
+    <li><a href="{% url 'instrument_list' %}" class="nav-links">Trade Futures</a></li>
+    <li><a href="{% url 'specs' %}" class="nav-links">Instrument Specs</a></li>
+  </ul>
+</div>
+<div class="col-sm-2"></div>
+</div>
+{% block content %}
+{% endblock %}
+<div class="container-fluid bottom-footer">
+<div class="col-sm-1"></div>
+<div class="col-sm-10" id="footer">
+<ul class="nav navbar-nav">
+<li class="active"><a href="{% url 'home' %}" class="nav-links bottom">Home</a></li>
+<li><a href="{% url 'aboutUS' %}" class="nav-links bottom">About Us</a></li>
+<li><a href="{% url 'home' %}" class="nav-links bottom"> Transactions</a></li>
+<li><a href="{% url 'portfolio' %}" class="nav-links bottom">Portfolio</a></li>
+<li><a href="{% url 'home' %}" class="nav-links bottom">Add Funds</a></li>
+<li><a href="{% url 'instrument_list' %}" class="nav-links bottom">Trade Futures</a></li>
+<li><a href="{% url 'specs' %}" class="nav-links bottom">Instrument Specs</a></li>
+<li><a href="{% url 'ContactUS' %}" class="nav-links bottom">Contact Us</a></li>
+</ul>
+</div>
+<div class="col-sm-1"></div>
+</div>
+
+  <script type="text/javascript" src="{% static 'Javascript/jquery-3.2.1.min.js' %}"> </script>
+  <script type="text/javascript" src="{% static 'Javascript/bootstrap.min.js' %}"> </script>
+
+  {% block futurejs %}
+  {% endblock %}
+  <script type="text/javascript" src="{% static 'Javascript/myApp.js' %}"> </script>
+  </body>
+</html>

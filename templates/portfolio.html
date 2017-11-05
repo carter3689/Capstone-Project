@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+<style>
+#piechart-div{
+  margin-top: 5em;
+}
+/*.plot-container, .svg-container{
+  background-color: #FBFCFC;
+}*/
+
+
+/*.main-svg{
+  background: rgb(255, 255, 255);
+}*/
+
+</style>
+
+<div class="container-fluid" id="piechart-div">
+  <div class="col-sm-8 middle" id="pie-chart">
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+{% endblock content %}
+
+{% block futurejs %}
+<script type="text/javascript" src="{% static 'Javascript/plotly-latest.min.js' %}"> </script>
+<script type="text/javascript" src="{% static 'Javascript/portfolio.js' %}"> </script>
+{% endblock %}

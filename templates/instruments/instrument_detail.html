@@ -1,0 +1,125 @@
+{% extends 'layout.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+<style>
+#tableheaderRow{
+  background-color: white;
+}
+
+#future-headers, .futures{
+  color: black;
+  border-right: 1px solid lightgrey;
+}
+
+.futures{
+  color: #485d7f;
+  background-color: #E8F8F5;
+}
+
+.futures-down{
+  color:red;
+  font-size: 18px;
+  text-align: center;
+  border-right: 1px solid lightgrey;
+  background-color: #E8F8F5;
+}
+
+.futures-up{
+  color:blue;
+  font-size: 18px;
+  text-align: center;
+  border-right: 1px solid lightgrey;
+  background-color: #E8F8F5;
+}
+
+
+
+#table-striped{
+  border: 2px solid lightgrey;
+}
+
+#future-headers, .futures{
+  text-align: center;
+  font-size: 18px;
+}
+
+#commodity {
+  font-weight: bold;
+}
+.candlechart{
+  background-color: #E8F8F5;
+  border: 1px solid lightgrey;
+  border-left: 0;
+  border-right: 0;
+}
+
+#candlestickdiv{
+  border: 3px solid lightgrey;
+  border-radius: 0.5em;
+  background-color: white;
+}
+
+
+</style>
+<!-- CHART -->
+<div class="container-fluid candlechart" id="front-img-container">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10 middle" id="candlestickdiv">
+  <div id="candlestick"></div>
+  </div>
+  <div class="col-sm-1"></div>
+  </div>
+<!-- Trade Table -->
+<div class="container-fluid" id="front-img-container">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10 middle">
+    <table class="table table-striped" id="table-striped">
+      <thead>
+      <tr id="tableheaderRow">
+        <th id="future-headers">Contract</th>
+        <th id="future-headers">Exchange</th>
+        <th id="future-headers">Symbol</th>
+        <th id="future-headers">Price</th>
+        <th id="future-headers">Net Change</th>
+        <th id="future-headers">Open</th>
+        <th id="future-headers">High</th>
+        <th id="future-headers">Low</th>
+        <th id="future-headers">Prev. Settle</th>
+        <th id="future-headers">Volume</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="futures" id="commodity">{{object.title}}</td>
+        <td class="futures">{{object.exchange}}</td>
+        <td class="futures">{{object.symbol}}</td>
+        <td id="price" class="futures"></td>
+        <td id="net-change" class="futures"></td>
+        <td id="open" class="futures"></td>
+        <td id="high" class="futures"></td>
+        <td id="low" class="futures"></td>
+        <td id="prev-settle" class="futures"></td>
+        <td id="volume" class="futures"></td>
+      </tr>
+
+    </tbody>
+    </table>
+
+
+
+</div>
+<div class="col-sm-1"></div>
+</div>
+<!-- {{object.exchange}} -->
+
+{% endblock content %}
+
+{% block futurejs %}
+<script type="text/javascript">
+var exchange = "{{object.exchange}}"
+var symbol = "{{object.symbol}}"
+</script>
+<script type="text/javascript" src="{% static 'Javascript/future.js' %}"> </script>
+<script type="text/javascript" src="{% static 'Javascript/plotly-latest.min.js' %}"> </script>
+{% endblock %}
