@@ -3,69 +3,21 @@
 
 {% block content %}
 <style>
-#tableheaderRow{
-  background-color: white;
-}
-
-#future-headers, .futures{
-  color: black;
-  border-right: 1px solid lightgrey;
-}
-
-.futures{
-  color: #485d7f;
-  background-color: #E8F8F5;
-}
-
-.futures-down{
-  color:red;
-  font-size: 18px;
+#title-detail{
   text-align: center;
-  border-right: 1px solid lightgrey;
-  background-color: #E8F8F5;
-}
-
-.futures-up{
-  color:blue;
-  font-size: 18px;
-  text-align: center;
-  border-right: 1px solid lightgrey;
-  background-color: #E8F8F5;
-}
-
-
-
-#table-striped{
-  border: 2px solid lightgrey;
-}
-
-#future-headers, .futures{
-  text-align: center;
-  font-size: 18px;
-}
-
-#commodity {
+  font-size: 48px;
   font-weight: bold;
+  color: #485d7f;
+  font-family: Garamond monospace;
 }
-.candlechart{
-  background-color: #E8F8F5;
-  border: 1px solid lightgrey;
-  border-left: 0;
-  border-right: 0;
-}
-
-#candlestickdiv{
-  border: 3px solid lightgrey;
-  border-radius: 0.5em;
-  background-color: white;
-}
-
-
 </style>
+
+
 <!-- CHART -->
 <div class="container-fluid candlechart" id="front-img-container">
   <div class="col-sm-1"></div>
   <div class="col-sm-10 middle" id="candlestickdiv">
+    <p id="title-detail">{{object.title}} ({{object.symbol}})</p>
   <div id="candlestick"></div>
   </div>
   <div class="col-sm-1"></div>
@@ -77,7 +29,7 @@
     <table class="table table-striped" id="table-striped">
       <thead>
       <tr id="tableheaderRow">
-        <th id="future-headers">Contract</th>
+        <th colspan="2" id="future-headers">Contract</th>
         <th id="future-headers">Exchange</th>
         <th id="future-headers">Symbol</th>
         <th id="future-headers">Price</th>
@@ -91,7 +43,13 @@
     </thead>
     <tbody>
       <tr>
-        <td class="futures" id="commodity">{{object.title}}</td>
+        <td colspan="2" class="futures" id="commodity">{{object.title}}
+          <select class ="" name="item">
+          {% for vari_choice in object.variation_set.all %}
+            <option value= "{{vari_choice.id}}">{{vari_choice.title}} </option>
+            {% endfor %}
+        </select>
+        </td>
         <td class="futures">{{object.exchange}}</td>
         <td class="futures">{{object.symbol}}</td>
         <td id="price" class="futures"></td>

@@ -14,9 +14,9 @@ from django.utils.text import slugify
 # Create your models here.
 
 class Instrument(models.Model):
-    title = models.CharField(max_length = 60)
+    title = models.CharField(max_length = 50)
     exchange = models.CharField(max_length = 150)
-    symbol = models.CharField(max_length = 60)
+    symbol = models.CharField(max_length = 50)
     slug = models.SlugField(blank=True)
 
     def __str__(self):
@@ -39,9 +39,9 @@ pre_save.connect(instrument_pre_save_receiver,sender=Instrument)
 
 class Variation(models.Model):
     instrument=models.ForeignKey(Instrument)
-    title=models.CharField(max_length=60)
+    title=models.CharField(max_length=50)
     active=models.BooleanField(default=True)
-    symbol=models.CharField(max_length = 60)
+    symbol=models.CharField(max_length = 50)
 
 
     def __str__(self):
@@ -79,7 +79,7 @@ def instrument_variation_post_save_receiver(sender,instance,created,*args,**kwar
     if variations.count() == 0:
         new_variation=Variation()
         new_variation.instrument=instrument#using the foreignkey relationship from Product
-        new_variation.title="December"#Creating our default variation if nome exist
+        new_variation.title="Liquid Contract"#Creating our default variation if nome exist
         new_variation.save() #Saving the variation to the database
     print(created)#This will print when a new instrument variation is created
 
