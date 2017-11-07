@@ -129,6 +129,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
 os.path.join(BASE_DIR, 'assets'),
 )
+# python manage.py collectstatic
 
+STATIC_ROOT = 'assets/project_static_files'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
