@@ -5,6 +5,20 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import Instrument
 
+# Testing Signin imports
+
+from allauth.account.views import SignupView
+from allauth.account.forms import LoginForm
+
+class CustomSignupView(SignupView):
+    # here we add some context to the already existing context
+    def get_context_data(self, **kwargs):
+        # we get context data from original view
+        context = super(CustomSignupView,
+                        self).get_context_data(**kwargs)
+        context['login_form'] = LoginForm() # add form to context
+        return context
+
 class InstrumentList(ListView):
     model = Instrument
     template_name= "instrument_list.html"
@@ -18,8 +32,6 @@ class InstrumentList(ListView):
 class InstrumentDetail(DetailView):
     model= Instrument
 
-    def get_queryset(self):
-        return Instrument.objects.values("title","exchange","symbol").all()
 
     def get_context_data(self, **kwargs):
         print(kwargs)

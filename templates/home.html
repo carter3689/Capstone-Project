@@ -1,26 +1,6 @@
 {% extends 'layout.html' %}
 {% load static from staticfiles %}
 
-{% block login %}
-
-
-<form action="/action_page.php">
-<label><b>Username</b></label>
-<input type="text" placeholder="Enter Username" name="uname" required>
-<label><b>Password</b></label>
-<input type="password" placeholder="Enter Password" name="psw" required>
-<button type="submit">Login</button>
-<input type="checkbox" checked="checked"> Remember me
-
-
-<div class="container" style="background-color:#f1f1f1">
-<a href="{% url 'Register' %}" class="btn btn-info registerbtn" role="button">Register</a>
-<span class="psw">Forgot <a href="#">password?</a></span>
-</div>
-</form>
-
-
-{% endblock %}
 
 
 {% block content %}

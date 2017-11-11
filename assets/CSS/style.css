@@ -1,12 +1,25 @@
 #main-background{
-  min-height: 8em;
-  max-height: 27em;
-  background-color: #485d7f;
+  min-height: 28em;
+  max-height: 28em;
+  background-color: #485d7f;*/
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body{
+background-color: #485d7f;
+}
+
+main{
+  background-color: whitesmoke;
 }
 
 #main-background .container-fluid{
-  margin-top: -1.5em;
-}
+  margin-top: -1.5em;}
+
+/*.navbar-nav{
+  /*background-color: whitesmoke;
+}*/
 
 
 form {
@@ -46,6 +59,11 @@ color:grey;
 
 #front_login .container{
   max-width: 100%
+}
+
+#nav-section{
+  margin-top: -4em;
+  margin-bottom: 0;
 }
 
 input[type=text], input[type=password] {
@@ -139,7 +157,12 @@ span.psw {
 .nav-links {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.35em;
-  color: black;
+  color: white;
+  text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
 }
 
 #front-img-container{
@@ -280,4 +303,15 @@ text-align: center;
 
 #table-striped{
   border: 2px solid black;
+}
+
+#table-striped-portfolio{
+  border: 1px solid lightgrey;
+  text-align: center;
+  /*border-spacing: 2px;*/
+}
+
+#tableheaderRows{
+  /*border: 1px solid black;*/
+  /*border-bottom: 0;*/
 }

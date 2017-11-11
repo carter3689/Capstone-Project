@@ -231,6 +231,7 @@ caption {
 .futures{
   color: #485d7f;
   background-color: #E8F8F5;
+  border-bottom: 1px solid lightgrey;
 }
 
 .futures-down{
@@ -239,6 +240,7 @@ caption {
   text-align: center;
   border-right: 1px solid lightgrey;
   background-color: #E8F8F5;
+  border-bottom: 1px solid lightgrey;
 }
 
 .futures-up{
@@ -247,6 +249,7 @@ caption {
   text-align: center;
   border-right: 1px solid lightgrey;
   background-color: #E8F8F5;
+  border-bottom: 1px solid lightgrey;
 }
 
 

@@ -17,6 +17,7 @@ class Instrument(models.Model):
     title = models.CharField(max_length = 50)
     exchange = models.CharField(max_length = 150)
     symbol = models.CharField(max_length = 50)
+    multiplier=models.IntegerField()
     slug = models.SlugField(blank=True)
 
     def __str__(self):
@@ -42,7 +43,7 @@ class Variation(models.Model):
     title=models.CharField(max_length=50)
     active=models.BooleanField(default=True)
     symbol=models.CharField(max_length = 50)
-
+    multiplier=models.IntegerField()
 
     def __str__(self):
         return self.title
@@ -80,7 +81,9 @@ def instrument_variation_post_save_receiver(sender,instance,created,*args,**kwar
         new_variation=Variation()
         new_variation.instrument=instrument#using the foreignkey relationship from Product
         new_variation.title="Liquid Contract"#Creating our default variation if nome exist
+        new_variation.multiplier = instrument.multiplier
         new_variation.save() #Saving the variation to the database
+        # variations = Variation.objects.order_by('instrument')
     print(created)#This will print when a new instrument variation is created
 
 post_save.connect(instrument_variation_post_save_receiver, sender=Instrument)

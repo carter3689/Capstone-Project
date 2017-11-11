@@ -23,6 +23,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from instruments.views import InstrumentList, InstrumentDetail
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name='home'),
@@ -31,10 +32,14 @@ urlpatterns = [
     url(r'^register$', views.Register, name='Register'),
     url(r'^specs$', views.specs, name='specs'),
     url(r'^portfolio$', views.portfolio, name='portfolio'),
+    url(r'^transactions$', views.transaction, name='transactions'),
+    url(r'^funds$', views.funds, name='funds'),
     url(r'^instruments/$', InstrumentList.as_view(), name="instrument_list"),
     url(r'^instruments/detail/(?P<pk>\d+)/$', InstrumentDetail.as_view(), name='instrument_detail'),
     url(r'^instruments/detail/(?P<slug>[-\w]+)/$', InstrumentDetail.as_view(), name='instrument_detail_slug'),
     #url(r'^cart/$', CartView.as_view(),name= 'cart'),
+    url(r'^accounts/', include('allauth.urls')),
+    url(r'^instrument/purchase/$',views.purchase_made,name = "purchase_made"),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

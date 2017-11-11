@@ -25,6 +25,8 @@ $('#picDD').change(function () {
     var val = parseInt($('#picDD').val());
     $('#specpics').attr("src",pictureList[val]);
 });
-
+$("#not-authenticated, #not-authenticated1, #not-authenticated2, #not-authenticated3, #not-authenticated4, #not-authenticated5, #not-authenticated6, #not-authenticated7").on( "click", function(){
+  alert("You must be logged in to enter this area!");
+});
 
 });

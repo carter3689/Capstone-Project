@@ -231,6 +231,7 @@ caption {
 .futures{
   color: #485d7f;
   background-color: #E8F8F5;
+  border-bottom: 1px solid lightgrey;
 }
 
 .futures-down{
@@ -239,6 +240,7 @@ caption {
   text-align: center;
   border-right: 1px solid lightgrey;
   background-color: #E8F8F5;
+  border-bottom: 1px solid lightgrey;
 }
 
 .futures-up{
@@ -247,12 +249,16 @@ caption {
   text-align: center;
   border-right: 1px solid lightgrey;
   background-color: #E8F8F5;
+  border-bottom: 1px solid lightgrey;
 }
 
-
+#table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #E8F8F5;
+}
 
 #table-striped{
   border: 2px solid lightgrey;
+  text-align: center;
 }
 
 #future-headers, .futures{
@@ -274,4 +280,64 @@ caption {
   border: 3px solid lightgrey;
   border-radius: 0.5em;
   background-color: white;
+}
+
+#title-detail{
+  text-align: center;
+  font-size: 48px;
+  font-weight: bold;
+  color: #485d7f;
+  font-family: Garamond monospace;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+   opacity: 1;
+
+}
+
+#order{
+  text-align: center;
+}
+
+.Buy{
+  color:white;
+  background-color: blue;
+  border: 1px solid black;
+  font-weight: bold
+}
+
+.Sell{
+  color:white;
+  background-color: red;
+  border: 1px solid black;
+  font-weight: bold;
+}
+
+.Buy, .Sell {
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.quantity{
+  border: 1px solid black;
+  font-weight: bold;
+  color:black;
+}
+
+#commodity{
+  font-size: 22px;
+  text-align: left;
+}
+
+.choice{
+  font-size: 16px;
+  text-align: right;
+}
+
+#choice-div{
+  padding-right: 0;
 }

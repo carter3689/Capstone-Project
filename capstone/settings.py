@@ -38,8 +38,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'instruments',
+    'transaction',
     # 'carts',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'django.contrib.sites',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -68,6 +76,17 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+
 
 WSGI_APPLICATION = 'capstone.wsgi.application'
 
@@ -130,7 +149,20 @@ STATICFILES_DIRS = (
 os.path.join(BASE_DIR, 'assets'),
 )
 # python manage.py collectstatic
+# python-fall) GEORGEs-MacBook-Air:source_shoestore georgemakris$ git add requirements.txt
+# (python-fall) GEORGEs-MacBook-Air:source_shoestore georgemakris$ git add .
+# (python-fall) GEORGEs-MacBook-Air:source_shoestore georgemakris$ git commit _m "push again"
+# error: pathspec '_m' did not match any file(s) known to git.
+# error: pathspec 'push again' did not match any file(s) known to git.
+# (python-fall) GEORGEs-MacBook-Air:source_shoestore georgemakris$ git commit -m "push again"
+# [master 42ef9e6] push again
+# heroku create
+# (python-fall) GEORGEs-MacBook-Air:source_shoestore georgemakris$ git push heroku master
 
 STATIC_ROOT = 'assets/project_static_files'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
+
+# Testing Login Redirect
+
+ACCOUNT_ADAPTER = 'capstone.users.allauth.AccountAdapter'

@@ -2,6 +2,9 @@
   min-height: 8em;
   max-height: 27em;
   background-color: #485d7f;
+
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #main-background .container-fluid{

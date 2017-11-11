@@ -1,4 +1,16 @@
+function onChoiceChange(e){
+  symbol = this.value;
 
+  loadData();
+};
+
+
+
+
+
+
+
+function loadData(){
 // Examples of correct url for api's
 // https://www.quandl.com/api/v3/datasets/CME/YWZ2017.json?api_key=zeZW2ba38zkWbmBz_ufL
 // https://www.quandl.com/api/v3/datasets/CME/YKX2017.json?api_key=zeZW2ba38zkWbmBz_ufL
@@ -11,8 +23,10 @@ $.ajax(
     method: "GET",
     success: function(data){
 
+      $('#purchasesymbol').val(symbol);
     var results = data.dataset.data[0][6];
       $("#price").html(results);
+      $("#purchaseprice").val(results);
 
     var results1 = data.dataset.data[1][6];
       $("#net-change").html(parseFloat((results-results1).toFixed(3)));
@@ -39,6 +53,8 @@ $.ajax(
 
     var results = data.dataset.data[0][7];
       $("#volume").html(results);
+
+    $('.symbolchoice').html(symbol);
 
       var a = data.dataset.data;
         var z= [];
@@ -160,11 +176,70 @@ $.ajax(
        }
      };
 
-     Plotly.plot('candlestick', data, layout);
+     Plotly.newPlot('candlestick', data, layout);
 
 
 
 
+
+
+  $(".choice").change(onChoiceChange);
+  $("#sellbutton").click(onSellClick);
+  $("#buybutton").click(onBuyClick);
+
+
+  $("form").submit(function(e){
+    e.preventDefault();
+    var quantity = $('#purchasequantity').val();
+    var price = $('#purchaseprice').val();
+    var sym = $('#purchasesymbol').val();
+    var multiplier = $('#total_multiplier').val();
+    $.post("/instrument/purchase/", {
+      quantity: quantity,
+      price: price,
+      symbol: sym,
+      multiplier:multiplier
+    }).then(function(response){
+      console.log(response);
+    }, function(error_response){
+      console.log(error_response)
+    })
+
+  })
+
+
+
+  function onSellClick(e){
+    if ($('.quantity').val()!=0){
+      var quantity = $('.quantity').val()*-1;
+      var price = $('#purchaseprice').val();
+      var sym = $('#purchasesymbol').val();
+      var multiplier = $('#total_multiplier').val();
+      $('#purchasequantity').val($('.quantity').val()[0] * -1);
+      confirm("You want to sell  "+quantity*-1+" contract(s) of "+sym+" at "+ price);
+      var cash_outlay=quantity*price*50
+
+  }
+    else{
+      confirm("You must enter in a quantity");
+  }
+}
+
+
+
+  function onBuyClick(e){
+    if ($('.quantity').val()!=0){
+      var quantity = $('.quantity').val();
+      var price = $('#purchaseprice').val();
+      var sym = $('#purchasesymbol').val();
+      var multiplier = $('#total_multiplier').val();
+      $('#purchasequantity').val($('.quantity').val()[0]);
+      confirm("You want to buy  "+quantity+" contract(s) of "+sym+" at "+ price);
+  }
+    else{
+      confirm("You must enter in a quantity");
+    }
+}
 
 
 
@@ -178,3 +253,7 @@ $.ajax(
     console.log(error,message);
    }
    });
+}
+
+
+loadData();

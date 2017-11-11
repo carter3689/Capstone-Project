@@ -4,7 +4,7 @@ from django.contrib import admin
 from .models import Instrument, Variation
 
 class InstrumentAdmin(admin.ModelAdmin):
-    list_display = ['__str__', 'exchange', 'symbol']
+    list_display = ['__str__', 'exchange', 'symbol', 'multiplier']
     search_fields = ['title']
     list_filter = ['title']
     list_search = ['exhange']
@@ -17,7 +17,7 @@ class InstrumentAdmin(admin.ModelAdmin):
 
 
 class VariationAdmin(admin.ModelAdmin):
-    list_display=['__str__', 'instrument', 'active', 'symbol']
+    list_display=['__str__', 'instrument', 'active', 'symbol', 'multiplier']
     # list_editable=['inventory']
 
     class Meta:

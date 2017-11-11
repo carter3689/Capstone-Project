@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+
+<style>
+#funds{
+  background-color: #EAECEE;
+  border: 1px solid lightgrey;
+}
+
+#funds2{
+  border: 0;
+}
+
+.funds{
+  font-family: garamond, sans-serif;
+  font-weight: bolder;
+  font-size: 36px;
+}
+</style>
+<div class="container-fluid" id="front-img-container">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8 middle" id="funds">
+      <h2 class="funds">Add Funds</h2>
+
+  <form action="/action_page.php"  id="funds2" >
+    <div>
+      <label><b>Name</b></label>
+      <input type="text" placeholder="Enter Name" name="email" required>
+
+      <label><b>Amount of Funds</b></label>
+      <input type="text" placeholder="Enter Amount of Funds" name="funded" required>
+
+      <label><b>Bank Account#</b></label>
+      <input type="text" placeholder="Enter your Bank Account Number Here" name="account#" required>
+
+      <label><b>Routing#</b></label>
+      <input type="text" placeholder="Enter your Routing Number Here" name="routing#" required>
+
+      <input type="checkbox" checked="checked"> Remember me
+      <p>By depositing funds you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+      <div class="clearfix">
+        <a href="{% url 'home' %}" class="btn btn-info cancelbtn" role="button">Cancel</a>
+        <button type="submit" class="signupbtn" id="DepositFunds">Deposit Funds</button>
+      </div>
+    </div>
+  </form>
+
+
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+
+{% endblock %}

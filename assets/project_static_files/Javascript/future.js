@@ -1,4 +1,12 @@
+function onChoiceChange(e){
+  symbol = this.value;
+  loadData();
+};
 
+
+
+
+function loadData(){
 // Examples of correct url for api's
 // https://www.quandl.com/api/v3/datasets/CME/YWZ2017.json?api_key=zeZW2ba38zkWbmBz_ufL
 // https://www.quandl.com/api/v3/datasets/CME/YKX2017.json?api_key=zeZW2ba38zkWbmBz_ufL
@@ -39,6 +47,8 @@ $.ajax(
 
     var results = data.dataset.data[0][7];
       $("#volume").html(results);
+
+    $('.symbolchoice').html(symbol);
 
       var a = data.dataset.data;
         var z= [];
@@ -160,10 +170,11 @@ $.ajax(
        }
      };
 
-     Plotly.plot('candlestick', data, layout);
+     Plotly.newPlot('candlestick', data, layout);
 
 
 
+  $(".choice").change(onChoiceChange);
 
 
 
@@ -178,3 +189,6 @@ $.ajax(
     console.log(error,message);
    }
    });
+}
+
+loadData();
